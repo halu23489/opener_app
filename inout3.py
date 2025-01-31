@@ -11,16 +11,19 @@ def transfer_data():
         out_wb = openpyxl.load_workbook(out_path)
         in_wb = openpyxl.load_workbook(in_path)
 
-        out_sheet = out_wb["アウト"]
-        in_sheet = in_wb["イン"]
+        out_sheet = out_wb["工事概要書【社内用ISO書式】 (3)"]
+        in_sheet = in_wb["工事概要"]
 
         # 転記処理 (例)
         transfer_list = [
-            ("G5", "J7"),
-            ("H6", "K8"),
-            ("I7", "L9"),
-            ("J8", "M10"),
-            ("K9", "N11"),
+            ("M10","C5"),
+            ("M28", "C13"),
+            ("Z28", "E13"),
+            ("M31", "C16"),
+            ("A115", "D25"),
+            ("K115", "D26"),
+            ("M1", "D24"),
+            ("M19", "C18"),
         ]
 
         for out_cell, in_cell in transfer_list:
@@ -41,14 +44,14 @@ root = tk.Tk()
 root.title("Excelデータ転送")
 
 # ファイルパス入力
-out_label = tk.Label(root, text="out.xlsxパス:")
+out_label = tk.Label(root, text="元データパス:")
 out_label.grid(row=0, column=0)
 out_entry = tk.Entry(root)
 out_entry.grid(row=0, column=1)
 out_button = tk.Button(root, text="参照", command=lambda: out_entry.insert(0, filedialog.askopenfilename()))
 out_button.grid(row=0, column=2)
 
-in_label = tk.Label(root, text="in.xlsxパス:")
+in_label = tk.Label(root, text="転載先データパス:")
 in_label.grid(row=1, column=0)
 in_entry = tk.Entry(root)
 in_entry.grid(row=1, column=1)
